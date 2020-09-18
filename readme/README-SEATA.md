@@ -17,8 +17,8 @@
 </dependency>
 
 <dependency>
-    <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+    <groupId>com.alibaba.cloud</groupId>
+    <artifactId>spring-cloud-alibaba-nacos-discovery</artifactId>
 </dependency>
 ```
 
@@ -28,11 +28,11 @@ spring:
   cloud:
     alibaba:
       seata:
-        tx-service-group: beyond_tx_group          # 事物组
+        tx-service-group: beyond_alibaba_tx_group          # 事物组
 
 seata:
   enabled: true
-  enable-auto-data-source-proxy: true              # 开启数据库自动代理
+  enable-auto-data-source-proxy: true                      # 开启数据库自动代理
   registry:
     type: nacos
     nacos:
