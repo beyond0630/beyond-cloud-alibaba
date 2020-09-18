@@ -4,8 +4,8 @@
 * Java 应用，通过 JDBC 访问数据库。
 * 每个微服务已完成对 MySQL + Druid + Mybatis 的集成
 
-## 2. 安装 seata server
-* 请参考 [CentOS 7 安装 Seata Server](https://github.com/beyond0630/notes/blob/master/seata/install.md)
+## 2. Docker 安装 seata server
+* 请参考 [Docker 安装 Seata Server](https://github.com/beyond0630/beyond-cloud-alibaba-deploy/blob/master/infra/seata-deploy.sh)
 
 ## 3. 集成步骤
 ### 1) 导入包
