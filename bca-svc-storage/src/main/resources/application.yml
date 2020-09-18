@@ -1,0 +1,25 @@
+server:
+  port: 10003
+
+spring:
+  application:
+    name: bca-svc-storage
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://${LINUX_HOST:192.168.178.129}:3306/beyond-cloud-alibaba-storage?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai&useSSL=false
+      username: root
+      password: lucifer
+      initial-size: 5
+      max-active: 20
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    root: info
+    com.beyond.cloud.alibaba: debug
+
