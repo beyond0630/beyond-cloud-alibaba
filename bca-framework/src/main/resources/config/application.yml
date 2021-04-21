@@ -1,15 +1,15 @@
 spring:
   cloud:
     nacos:
-      server-addr: ${LINUX_HOST:192.168.178.129}:8848
+#      server-addr: ${LINUX_HOST:192.168.178.129}:8848
+      server-addr: nacos-headless.beyond.svc.cluster.local
       discovery:
         namespace: public
         cluster-name: ${spring.application.name}
-        ip: ${LOCAL_HOST:192.168.110.179}
 
     alibaba:
       seata:
-        tx-service-group: beyond_alibaba_tx_group
+        tx-service-group: my_test_tx_group
 
 seata:
   enabled: true
@@ -17,14 +17,14 @@ seata:
   registry:
     type: nacos
     nacos:
-      server-addr: ${LINEX_HOST:192.168.178.129}:8848
+      server-addr: nacos-headless.beyond.svc.cluster.local
       namespace: public
       cluster: seata-server
-      group: SEATA_GROUP
+      group: DEFAULT_GROUP
   config:
     type: nacos
     nacos:
-      server-addr: ${LINEX_HOST:192.168.178.129}:8848
+      server-addr: nacos-headless.beyond.svc.cluster.local
       namespace: public
 
 management:

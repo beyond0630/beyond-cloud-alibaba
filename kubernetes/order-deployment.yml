@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bca-svc-order
+  namespace: beyond
+  labels:
+    k8s-app: bca-svc-order
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: bca-svc-order
+  template:
+    metadata:
+      labels:
+        k8s-app: bca-svc-order
+    spec:
+      imagePullSecrets:
+        - name: aliyun-secret
+      containers:
+        - name: seata-server
+          image: registry.cn-shenzhen.aliyuncs.com/lucifer-public/bca-svc-order:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 10002
