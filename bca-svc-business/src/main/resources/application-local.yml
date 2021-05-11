@@ -1,0 +1,18 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: bca-svc-business
+
+feign:
+  client:
+    config:
+      default:
+        connect-timeout: 5000
+        read-timeout: 5000
+
+logging:
+  level:
+    root: info
+    com.beyond.cloud.alibaba: debug

@@ -1,0 +1,36 @@
+spring:
+  cloud:
+    nacos:
+#      server-addr: ${LINUX_HOST:192.168.178.129}:8848
+      server-addr: http://nacos.lucifer.k8s
+      discovery:
+        namespace: public
+        cluster-name: ${spring.application.name}
+        ip: ${LOCAL_HOST:192.168.110.179}
+
+    alibaba:
+      seata:
+        tx-service-group: my_test_tx_group
+
+seata:
+  enabled: true
+  enable-auto-data-source-proxy: true              # 开启数据库自动代理
+  registry:
+    type: nacos
+    nacos:
+      server-addr: http://nacos.lucifer.k8s
+      namespace: public
+      cluster: seata-server
+      group: DEFAULT_GROUP
+  config:
+    type: nacos
+    nacos:
+      server-addr: http://nacos.lucifer.k8s
+      namespace: public
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+

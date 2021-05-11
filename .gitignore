@@ -11,8 +11,5 @@ log.txt
 /**/target/
 banner.txt
 git.properties
-*-local.yaml
-*-local.yml
-*-local.xml
 rebel.xml
 rebel-remote.xml

@@ -1,0 +1,35 @@
+server:
+  port: 10002
+
+spring:
+  application:
+    name: bca-svc-order
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://mysql.lucifer.io:13306/beyond-cloud-alibaba-order?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai&useSSL=false
+      username: root
+      password: lucifer
+      initial-size: 5
+      max-active: 20
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+logging:
+  level:
+    root: info
+    com.beyond.cloud.alibaba: debug
+
+
+feign:
+  client:
+    config:
+      default:
+        connect-timeout: 5000
+        read-timeout: 5000
+
