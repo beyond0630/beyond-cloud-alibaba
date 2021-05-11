@@ -18,9 +18,23 @@ spec:
       imagePullSecrets:
         - name: aliyun-secret
       containers:
-        - name: seata-server
+        - name: bca-svc-storage
           image: registry.cn-shenzhen.aliyuncs.com/lucifer-public/bca-svc-storage:latest
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
               containerPort: 10003
+          livenessProbe:
+            httpGet:
+              scheme: HTTP
+              port: 10003
+              path: /actuator/health
+            initialDelaySeconds: 60
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              scheme: HTTP
+              port: 10003
+              path: /actuator/health
+            initialDelaySeconds: 6
+            periodSeconds: 6

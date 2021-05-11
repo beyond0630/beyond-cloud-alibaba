@@ -31,11 +31,6 @@ public class AccountServiceImpl implements AccountService {
     @Override
     @Transactional
     public void debit(final String userId, final int money) {
-        try {
-            TimeUnit.SECONDS.sleep(3);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         Account account = accountMapperExt.selectAccountByUserId(userId);
         if (Objects.isNull(account) || account.getBalance() < money) {

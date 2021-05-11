@@ -5,6 +5,8 @@ import com.beyond.cloud.alibaba.order.account.AccountClient;
 import com.beyond.cloud.alibaba.order.domain.entity.Order;
 import com.beyond.cloud.alibaba.order.mapper.OrderMapper;
 import com.beyond.cloud.alibaba.order.serivce.OrderService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,6 +16,8 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 public class OrderServiceImpl implements OrderService {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(OrderServiceImpl.class);
 
     private final AccountClient accountClient;
     private final OrderMapper orderMapper;
@@ -26,6 +30,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     @Transactional
     public ApiResult<Order> createOrder(final String userId, final String commodityCode, final int count) {
+        final long start = System.currentTimeMillis();
         Order order = new Order();
         order.setUserId(userId);
         order.setCommodityCode(commodityCode);
@@ -35,6 +40,8 @@ public class OrderServiceImpl implements OrderService {
 
         accountClient.debit(userId, order.getMoney());
 
+        final long end = System.currentTimeMillis();
+        LOGGER.info("生成订单耗时: {} ms", (end - start));
         return ApiResult.ok(order);
     }
 
@@ -42,4 +49,5 @@ public class OrderServiceImpl implements OrderService {
         // 演示数据，直接返回 count
         return count;
     }
+
 }
