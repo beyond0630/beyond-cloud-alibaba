@@ -8,7 +8,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://mysql.lucifer.io:13306/beyond-cloud-alibaba-storage?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai&useSSL=false
+      url: jdbc:mysql://localhost:3306/beyond-cloud-alibaba-storage?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai&useSSL=false
       username: root
       password: lucifer
       initial-size: 5
